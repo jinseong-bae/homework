@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>평화나라 | 박혁거세 팝니다.</title>
+
+    <style>
+        h1, h6 {
+            display: inline;
+        }
+
+        hi {
+            font-weight: bold;
+        }
+
+        .wrap {
+            margin: 10px auto;
+            width: 500px;
+            padding-right: 50px;
+
+        }
+
+
+    </style>
+
+    <script>
+        function order() {
+
+
+            if ($('#order-name').val() == '') {
+                alert('이름을 입력해주세요')
+            } else if ($('#order-count').val() == '1인당 최대 구매가능한 개수는 3개입니다.') {
+                alert('수량을 입력해주세요')
+            } else if ($('#order-address').val() == '') {
+                alert('주소를 입력해주세요')
+            } else if ($('#order-phone').val() == '') {
+                alert('전화번호를 입력해주세요')
+
+            } else {
+                alert('주문이 완료되었습니다!');
+            }
+        }
+
+
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "https://api.manana.kr/exchange/rate.json",
+                data: {},
+                success: function (response) {
+                    // console.log(response)
+                    // for (let i = 0; i < response.length; i++) {
+                    //     let responsei = ["response"][i]
+                    let rate = response[1]["rate"]
+                    $('#exchangeRate').append(rate)
+                    // }
+                }
+            })
+        });
+
+
+    </script>
+
+
+</head>
+
+<body>
+<div class="wrap">
+    <p>
+        <img src="data:image/jpeg;base64,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"
+             width="450"/>
+    </p>
+    <p>
+    <h1>박혁거세(미개봉)</h1>
+    <h7>가격: 239,000원 / 개</h7>
+    </p>
+    <p>
+    <h6>박혁거세입니다. 보시다시피 미개봉이고 아직 단단합니다. 수컷이고 한글패치(2020.ver)완료했습니다.</h6>
+    </p>
+    <p style="color: blue" style="font-weight: bold" id="exchangeRate">달러-원 환율:
+    </p>
+
+    <h3>주문하기</h3>
+    </p>
+
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">주문자 성함</span>
+        </div>
+        <input type="text" class="form-control" id="order-name" aria-describedby="basic-addon3">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">수량</label>
+        </div>
+        <select class="custom-select" id="order-count">
+            <option selected>1인당 최대 구매가능한 개수는 3개입니다.</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+
+        </select>
+    </div>
+
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">주소</span>
+        </div>
+        <input type="text" class="form-control" id="order-address" aria-describedby="basic-addon3">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="order-phon">전화번호</span>
+        </div>
+        <input type="text" class="form-control" id="order-phone" aria-describedby="basic-addon3">
+    </div>
+
+
+    <button onclick="order()" type="button" class="btn btn-primary">주문하기</button>
+</div>
+
+</body>
+
+</html>
